@@ -1,0 +1,58 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'udacity'
+            keyPassword 'password'
+            storeFile file("$rootDir/keystore.jks")
+            storePassword 'password'
+        }
+    }
+    compileSdkVersion 25
+    buildToolsVersion '26.0.2'
+    defaultConfig {
+        applicationId "com.gemi.chat_me"
+        minSdkVersion 21
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+    }
+}
+
+dependencies {
+    ext {
+        supportLibVersion = '25.3.1'
+        firebaseLibVersion = '10.0.1'
+        firebaseUILibVersion = '1.1.1'
+    }
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile "com.android.support:support-v4:${supportLibVersion}"
+    compile "com.android.support:appcompat-v7:${supportLibVersion}"
+    compile "com.android.support:design:${supportLibVersion}"
+    compile "com.android.support:support-v4:${supportLibVersion}"
+    compile "com.android.support:recyclerview-v7:${supportLibVersion}"
+    compile "com.google.firebase:firebase-auth:${firebaseLibVersion}"
+    compile "com.google.firebase:firebase-database:${firebaseLibVersion}"
+    compile "com.google.firebase:firebase-storage:${firebaseLibVersion}"
+    compile "com.google.firebase:firebase-messaging:${firebaseLibVersion}"
+    compile "com.firebaseui:firebase-ui-database:${firebaseUILibVersion}"
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'com.theartofdev.edmodo:android-image-cropper:2.4.+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.github.ittianyu:BottomNavigationViewEx:1.2.2'
+    testCompile 'junit:junit:4.12'
+}
+apply plugin: 'com.google.gms.google-services'

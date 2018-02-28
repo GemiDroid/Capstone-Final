@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Despacito</string>
+    <string name="title_chats">Chats</string>
+    <string name="title_friends">Friends</string>
+    <string name="title_requests">Requests</string>
+    <string name="title_all">Meet</string>
+</resources>
