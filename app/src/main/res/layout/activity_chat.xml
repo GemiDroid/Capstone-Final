@@ -9,7 +9,7 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/space_50"
         android:layout_alignParentTop="true">
 
         <android.support.v7.widget.Toolbar
@@ -34,32 +34,33 @@
     <LinearLayout
         android:id="@+id/con"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/space_50"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="@dimen/space_5"
         android:orientation="horizontal"
-        android:padding="5dp">
+        android:padding="@dimen/space_5">
 
         <EditText
             android:id="@+id/chatEditText"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="@dimen/space_5"
+            android:layout_marginRight="@dimen/space_10"
             android:layout_weight="1"
             android:background="@drawable/chat"
-            android:hint="Type a message"
-            android:paddingLeft="10dp"
-            android:textColor="#fff"
-            android:textColorHint="#fff" />
+            android:hint="@string/type_message"
+            android:paddingLeft="@dimen/space_10"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
 
 
         <ImageView
+            android:contentDescription="@string/send"
             android:id="@+id/send"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/space_40"
+            android:layout_height="@dimen/space_40"
             android:background="@drawable/send"
-            android:padding="7dp"
+            android:padding="@dimen/space_7"
             android:src="@drawable/ic_send_black_24dp" />
 
     </LinearLayout>

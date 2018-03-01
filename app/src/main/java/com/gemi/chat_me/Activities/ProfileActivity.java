@@ -101,7 +101,7 @@ public class ProfileActivity extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent, "Select Image"), GALLERY_PICK);
+                startActivityForResult(Intent.createChooser(intent, getString(R.string.choose_image)), GALLERY_PICK);
             }
         });
         updateStatus.setOnClickListener(new View.OnClickListener() {
@@ -120,7 +120,7 @@ public class ProfileActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         progressDialog = new ProgressDialog(ProfileActivity.this);
                         alertDialog.dismiss();
-                        progressDialog.setMessage("Loading...");
+                        progressDialog.setMessage(getString(R.string.loading));
                         progressDialog.show();
                         String newStatusS = newStatus.getText().toString();
                         databaseReference.child("status").setValue(newStatusS).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -129,7 +129,7 @@ public class ProfileActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     progressDialog.dismiss();
                                 } else {
-                                    Toast.makeText(ProfileActivity.this, "Changing Status Failed", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ProfileActivity.this, getString(R.string.change_status_failed), Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
@@ -143,7 +143,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder logoutDialog = new AlertDialog.Builder(ProfileActivity.this);
-                logoutDialog.setMessage("Are you sure you want to logout?").setCancelable(false)
+                logoutDialog.setMessage(getString(R.string.logout_msg)).setCancelable(false)
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -186,7 +186,7 @@ public class ProfileActivity extends AppCompatActivity {
             CropImage.ActivityResult activityResult = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
                 progressDialog = new ProgressDialog(ProfileActivity.this);
-                progressDialog.setMessage("Loading...");
+                progressDialog.setMessage(getString(R.string.loading));
                 progressDialog.setCanceledOnTouchOutside(false);
                 progressDialog.show();
                 Uri uri = activityResult.getUri();
@@ -201,13 +201,13 @@ public class ProfileActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(ProfileActivity.this, "Image Updated", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(ProfileActivity.this, getString(R.string.image_updated), Toast.LENGTH_SHORT).show();
                                         progressDialog.dismiss();
                                     }
                                 }
                             });
                         } else {
-                            Toast.makeText(ProfileActivity.this, "Uploading Image Failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ProfileActivity.this, getString(R.string.uploading_img_failed), Toast.LENGTH_SHORT).show();
                             progressDialog.dismiss();
                         }
                     }

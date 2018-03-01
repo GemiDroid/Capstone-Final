@@ -29,7 +29,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 }
             }, 1000);
         } else {
-            Toast.makeText(SplashScreenActivity.this, "Network error. Please check your connection.", Toast.LENGTH_LONG).show();
+            Toast.makeText(SplashScreenActivity.this, getString(R.string.check_internet), Toast.LENGTH_LONG).show();
         }
     }
 

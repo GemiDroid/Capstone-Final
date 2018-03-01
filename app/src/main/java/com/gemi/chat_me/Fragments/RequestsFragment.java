@@ -79,7 +79,7 @@ public class RequestsFragment extends Fragment {
                         viewHolder.confirm.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                progressDialog.setMessage("Loading...");
+                                progressDialog.setMessage(getString(R.string.loading));
                                 progressDialog.setCanceledOnTouchOutside(false);
                                 progressDialog.show();
                                 friends.child(fCurrentUser.getUid()).child(UID).child("key").setValue(ServerValue.TIMESTAMP);
@@ -92,7 +92,7 @@ public class RequestsFragment extends Fragment {
                         viewHolder.delete.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                progressDialog.setMessage("Loading...");
+                                progressDialog.setMessage(getString(R.string.loading));
                                 progressDialog.setCanceledOnTouchOutside(false);
                                 progressDialog.show();
                                 DBR.child(fCurrentUser.getUid()).child("ReceivedRequests").child(UID).removeValue();

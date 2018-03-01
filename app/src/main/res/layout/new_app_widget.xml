@@ -1,32 +1,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#09C"
+    android:background="@color/widet_color"
     android:orientation="vertical"
     android:padding="@dimen/widget_margin">
 
     <ImageView
+        android:contentDescription="@string/name"
         android:id="@+id/widgetImage"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginBottom="10dp"
+        android:layout_height="@dimen/space_250"
+        android:layout_marginBottom="@dimen/space_10"
         android:src="@drawable/ic_account_circle_black_24dp" />
 
     <TextView
         android:id="@+id/widgetName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="@dimen/space_10"
         android:gravity="center"
-        android:textColor="#fff"
-        android:textSize="25sp" />
+        android:textColor="@color/white"
+        android:textSize="@dimen/space_25" />
 
     <TextView
         android:id="@+id/widgetStatus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textColor="#fff"
-        android:textSize="20sp" />
+        android:textColor="@color/white"
+        android:textSize="@dimen/space_20" />
 
 </LinearLayout>

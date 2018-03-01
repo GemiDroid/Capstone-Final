@@ -65,31 +65,31 @@ public class SignupActivity extends AppCompatActivity {
                 final String emailS = email.getText().toString();
                 final String jobS = job.getText().toString();
                 if (TextUtils.isEmpty(usernameS)) {
-                    username.setError("Enter Username");
+                    username.setError(getString(R.string.enter_user_name));
                     username.requestFocus();
                 } else if (TextUtils.isEmpty(passwordS)) {
-                    password.setError("Enter Password");
+                    password.setError(getString(R.string.enter_password));
                     password.requestFocus();
                 } else if (passwordS.length() < 6) {
-                    password.setError("Password must be at least 6 characters");
+                    password.setError(getString(R.string.password_validation));
                     password.requestFocus();
                 } else if (TextUtils.isEmpty(repassword.getText().toString())) {
-                    repassword.setError("Enter Re-Password");
+                    repassword.setError(getString(R.string.enter_re_password));
                     repassword.requestFocus();
                 } else if (!passwordS.equals(repassword.getText().toString())) {
-                    repassword.setError("Password not Match");
+                    repassword.setError(getString(R.string.password_not_match));
                     repassword.requestFocus();
                 } else if (TextUtils.isEmpty(emailS)) {
-                    email.setError("Enter E-Mail Address");
+                    email.setError(getString(R.string.enter_email));
                     email.requestFocus();
                 } else if (!emailS.matches(emailPattern)) {
-                    email.setError("Invalid E-Mail Address Format");
+                    email.setError(getString(R.string.invalid_email_format));
                     email.requestFocus();
                 } else if (TextUtils.isEmpty(jobS)) {
-                    job.setError("Enter Your Job");
+                    job.setError(getString(R.string.enter_job));
                     job.requestFocus();
                 } else {
-                    progressDialog.setMessage("Loading...");
+                    progressDialog.setMessage(getString(R.string.loading));
                     progressDialog.setCanceledOnTouchOutside(false);
                     progressDialog.show();
                     mAuth.createUserWithEmailAndPassword(emailS, passwordS).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -115,14 +115,14 @@ public class SignupActivity extends AppCompatActivity {
                                             finish();
                                         } else if (task.getException() instanceof FirebaseAuthUserCollisionException) {
                                             progressDialog.hide();
-                                            Toast.makeText(SignupActivity.this, "Signup Failed", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(SignupActivity.this, getString(R.string.sign_up_failure), Toast.LENGTH_SHORT).show();
                                         }
                                     }
                                 });
 
                             } else {
                                 progressDialog.hide();
-                                Toast.makeText(SignupActivity.this, "Signup Failed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignupActivity.this, getString(R.string.sign_up_failure), Toast.LENGTH_SHORT).show();
                             }
                         }
                     });

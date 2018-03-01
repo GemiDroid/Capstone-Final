@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
     android:layout_height="match_parent"
     android:background="@color/background"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="@dimen/space_10">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,15 +24,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="@dimen/space_50"
             android:src="@drawable/despacito" />
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginBottom="@dimen/space_5"
+            android:layout_marginLeft="@dimen/space_10"
+            android:layout_marginRight="@dimen/space_10"
             android:textColorHint="@color/colorAccent">
 
             <EditText
@@ -33,20 +40,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_mail_black_24dp"
-                android:drawablePadding="7dp"
-                android:hint="E-Mail"
+                android:drawablePadding="@dimen/space_10"
+                android:hint="@string/email"
                 android:inputType="textEmailAddress"
-
-                android:textColor="#fff" />
+                android:textColor="@color/white" />
 
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginBottom="@dimen/space_5"
+            android:layout_marginLeft="@dimen/space_10"
+            android:layout_marginRight="@dimen/space_10"
             android:textColorHint="@color/colorAccent">
 
             <EditText
@@ -54,22 +60,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_lock_black_24dp"
-                android:drawablePadding="7dp"
-                android:hint="Password"
+                android:drawablePadding="@dimen/space_10"
+                android:hint="@string/password"
                 android:inputType="textPassword"
-                android:textColor="#fff" />
+                android:textColor="@color/white" />
         </android.support.design.widget.TextInputLayout>
 
         <Button
+            android:textAllCaps="false"
             android:id="@+id/loginbtn"
-            android:layout_width="200dp"
+            android:layout_width="@dimen/space_200"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="70dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/space_20"
             android:background="@drawable/button"
-            android:text="Login"
-            android:textColor="#fff" />
+            android:text="@string/login"
+            android:textColor="@color/white" />
     </LinearLayout>
 
     <LinearLayout
@@ -81,21 +87,26 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginBottom="@dimen/space_10"
+            android:layout_marginTop="@dimen/space_30"
             android:gravity="center"
-            android:text="New User?"
+            android:text="@string/new_user"
             android:textColor="@color/textColor"
-            android:textSize="13sp" />
+            android:textSize="@dimen/space_10" />
 
         <Button
+            android:textAllCaps="false"
             android:id="@+id/signupbtn"
-            android:layout_width="250dp"
+            android:layout_width="@dimen/space_250"
+            android:layout_marginBottom="@dimen/space_10"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/button"
-            android:text="Create New Account"
-            android:textColor="#fff" />
+            android:text="@string/new_account"
+            android:textColor="@color/white" />
     </LinearLayout>
 
-</RelativeLayout>
+    </LinearLayout>
+
+
+</android.support.v4.widget.NestedScrollView>

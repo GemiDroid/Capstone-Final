@@ -6,10 +6,11 @@
     android:background="@color/background">
 
     <ImageView
+        android:contentDescription="@string/back"
         android:id="@+id/profileBack"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_margin="10dp"
+        android:layout_width="@dimen/space_250"
+        android:layout_height="@dimen/space_25"
+        android:layout_margin="@dimen/space_10"
         android:src="@drawable/ic_arrow_back_black_24dp" />
 
     <LinearLayout
@@ -20,27 +21,27 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profileImage"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="30dp"
+            android:layout_height="@dimen/space_250"
+            android:layout_marginBottom="@dimen/space_10"
+            android:layout_marginTop="@dimen/space_30"
             android:src="@drawable/ic_account_circle_black_24dp" />
 
         <TextView
             android:id="@+id/profileName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="@dimen/space_10"
             android:gravity="center"
-            android:textColor="#fff"
-            android:textSize="25sp" />
+            android:textColor="@color/white"
+            android:textSize="@dimen/space_25" />
 
         <TextView
             android:id="@+id/profileStatus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textColor="#fff"
-            android:textSize="20sp" />
+            android:textColor="@color/white"
+            android:textSize="@dimen/space_20" />
 
     </LinearLayout>
 
@@ -49,25 +50,27 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:layout_margin="20dp"
+        android:layout_margin="@dimen/space_20"
         android:orientation="vertical">
 
         <Button
+            android:textAllCaps="false"
             android:id="@+id/profileChangeStatusBTN"
-            android:layout_width="300dp"
+            android:layout_width="@dimen/space_250"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="@dimen/space_30"
             android:background="@drawable/button"
-            android:text="Change Status"
-            android:textColor="#fff" />
+            android:text="@string/change_status"
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/profileLogoutBTN"
-            android:layout_width="300dp"
+            android:layout_width="@dimen/space_250"
             android:layout_height="wrap_content"
             android:background="@drawable/buttonred"
-            android:text="Logout"
-            android:textColor="#fff" />
+            android:text="@string/logout"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 

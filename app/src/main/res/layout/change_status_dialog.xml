@@ -3,29 +3,30 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="@dimen/space_10">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Change Status"
-        android:textColor="#ea0d0d"
-        android:textSize="20sp" />
+        android:text="@string/change_status"
+        android:textColor="@color/red"
+        android:textSize="@dimen/space_20" />
 
     <EditText
         android:id="@+id/changestatusedittext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp" />
+        android:layout_marginBottom="@dimen/space_10"
+        android:layout_marginTop="@dimen/space_10" />
 
     <Button
         android:id="@+id/savestatuschangebutton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/button"
-        android:text="Save"
-        android:textColor="#fff" />
+        android:text="@string/save"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
 
 </LinearLayout>

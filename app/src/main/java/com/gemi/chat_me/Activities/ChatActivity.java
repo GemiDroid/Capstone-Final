@@ -93,11 +93,11 @@ public class ChatActivity extends AppCompatActivity {
                 }
                 name.setText(dataSnapshot.child("name").getValue().toString());
                 if (dataSnapshot.child("online").getValue().toString().equals("true")) {
-                    lastseen.setText("Active now");
+                    lastseen.setText(getString(R.string.active_now));
                 } else {
                     GetTime getTime = new GetTime();
                     String lastSeenS = getTime.getTimeAgo(Long.parseLong(dataSnapshot.child("online").getValue().toString()), getApplicationContext());
-                    lastseen.setText("Active " + lastSeenS);
+                    lastseen.setText(getString(R.string.active) + lastSeenS);
                 }
             }
 

@@ -10,7 +10,7 @@
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="@dimen/space_50">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -25,7 +25,7 @@
     <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
         android:id="@+id/navigation"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/space_50"
         android:layout_gravity="bottom"
         android:background="?android:attr/windowBackground"
         app:itemBackground="@color/colorPrimary"

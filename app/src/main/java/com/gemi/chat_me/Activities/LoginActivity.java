@@ -55,19 +55,19 @@ public class LoginActivity extends AppCompatActivity {
                 String emailL = email.getText().toString();
                 String passwordL = password.getText().toString();
                 if (TextUtils.isEmpty(emailL)) {
-                    email.setError("Enter E-Mail Address");
+                    email.setError(getString(R.string.enter_email));
                     email.requestFocus();
                 } else if (!Pattern.matches(Patterns.EMAIL_ADDRESS.pattern(),emailL)) {
-                    email.setError("Invalid E-Mail Address Format");
+                    email.setError(getString(R.string.invalid_email_format));
                     email.requestFocus();
                 } else if (TextUtils.isEmpty(passwordL)) {
-                    password.setError("Enter Password");
+                    password.setError(getString(R.string.enter_password));
                     password.requestFocus();
                 } else if (passwordL.length() < 6) {
-                    password.setError("Password must be at least 6 characters");
+                    password.setError(getString(R.string.password_validation));
                     password.requestFocus();
                 } else {
-                    progressDialog.setMessage("Loading...");
+                    progressDialog.setMessage(getString(R.string.loading));
                     progressDialog.setCanceledOnTouchOutside(false);
                     progressDialog.show();
                     mAuth.signInWithEmailAndPassword(emailL, passwordL).addOnCompleteListener(new OnCompleteListener<AuthResult>() {

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="5dp">
+    android:padding="@dimen/space_5">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -15,9 +15,9 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/meetImage"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="5dp"
+            android:layout_width="@dimen/space_100"
+            android:layout_height="@dimen/space_100"
+            android:layout_margin="@dimen/space_5"
             android:src="@drawable/ic_account_circle_black_24dp" />
 
         <TextView
@@ -25,8 +25,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textColor="#fff"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/space_15"
             android:textStyle="bold" />
 
     </LinearLayout>

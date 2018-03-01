@@ -54,7 +54,7 @@ public class FriendActivity extends AppCompatActivity {
         Delete = (Button) findViewById(R.id.friendDeleteBTN);
         friendCurrentState = "notFriends";
         progressDialog = new ProgressDialog(FriendActivity.this);
-        progressDialog.setMessage("Loading...");
+        progressDialog.setMessage(getString(R.string.loading));
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
 
@@ -78,9 +78,9 @@ public class FriendActivity extends AppCompatActivity {
                             count++;
                         }
                         if (count == 1) {
-                            FriendsCount.setText(count + " Friend");
+                            FriendsCount.setText(count + getString(R.string.friend));
                         } else {
-                            FriendsCount.setText(count + " Friends");
+                            FriendsCount.setText(count + getString(R.string.friends));
                         }
                     }
 
@@ -94,13 +94,13 @@ public class FriendActivity extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if (dataSnapshot.child("ReceivedRequests").hasChild(UID)) {
                             friendCurrentState = "requestReceived";
-                            Add.setText("Confirm");
+                            Add.setText(getString(R.string.confirm));//Confirm
                             Add.setBackground(getDrawable(R.drawable.button));
                             Delete.setVisibility(View.VISIBLE);
                             progressDialog.dismiss();
                         } else if (dataSnapshot.child("SentRequests").hasChild(UID)) {
                             friendCurrentState = "requestSent";
-                            Add.setText("Cancel Friend Request");
+                            Add.setText(getString(R.string.cancel_request));
                             Add.setBackground(getDrawable(R.drawable.buttonyellow));
                             progressDialog.dismiss();
                         } else {
@@ -109,7 +109,7 @@ public class FriendActivity extends AppCompatActivity {
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     if (dataSnapshot.hasChild(UID)) {
                                         friendCurrentState = "Users";
-                                        Add.setText("Unfriend");
+                                        Add.setText(getString(R.string.unfriend));
                                         Add.setBackground(getDrawable(R.drawable.buttonred));
                                         Delete.setVisibility(View.INVISIBLE);
                                         progressDialog.dismiss();
@@ -137,7 +137,7 @@ public class FriendActivity extends AppCompatActivity {
         Add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressDialog.setMessage("Loading...");
+                progressDialog.setMessage(getString(R.string.loading));
                 progressDialog.setCanceledOnTouchOutside(false);
                 progressDialog.show();
 
@@ -146,7 +146,7 @@ public class FriendActivity extends AppCompatActivity {
                         friendRequestDBR.child(fCurrentUser.getUid()).child("SentRequests").child(UID).child("RequestType").setValue("sent");
                         friendRequestDBR.child(UID).child("ReceivedRequests").child(fCurrentUser.getUid()).child("RequestType").setValue("received");
                         friendCurrentState = "requestSent";
-                        Add.setText("Cancel Friend Request");
+                        Add.setText(getString(R.string.cancel_request));
                         Add.setBackground(getDrawable(R.drawable.buttonyellow));
                         progressDialog.dismiss();
                         break;
@@ -156,7 +156,7 @@ public class FriendActivity extends AppCompatActivity {
                         friendRequestDBR.child(fCurrentUser.getUid()).child("SentRequests").child(UID).removeValue();
                         friendRequestDBR.child(UID).child("ReceivedRequests").child(fCurrentUser.getUid()).removeValue();
                         friendCurrentState = "notFriends";
-                        Add.setText("Send Friend Request");
+                        Add.setText(getString(R.string.send_request));
                         Add.setBackground(getDrawable(R.drawable.buttongreen));
                         progressDialog.dismiss();
                         break;
@@ -168,7 +168,7 @@ public class FriendActivity extends AppCompatActivity {
                         friendRequestDBR.child(fCurrentUser.getUid()).child("ReceivedRequests").child(UID).removeValue();
                         friendRequestDBR.child(UID).child("SentRequests").child(fCurrentUser.getUid()).removeValue();
                         friendCurrentState = "Users";
-                        Add.setText("Unfriend");
+                        Add.setText(getString(R.string.unfriend));
                         Add.setBackground(getDrawable(R.drawable.buttonred));
                         Delete.setVisibility(View.INVISIBLE);
                         progressDialog.dismiss();
@@ -181,7 +181,7 @@ public class FriendActivity extends AppCompatActivity {
                         MessagesDBR.child(fCurrentUser.getUid()).child(UID).removeValue();
                         MessagesDBR.child(UID).child(fCurrentUser.getUid()).removeValue();
                         friendCurrentState = "notFriends";
-                        Add.setText("Send Friend Request");
+                        Add.setText(getString(R.string.send_request));
                         Add.setBackground(getDrawable(R.drawable.buttongreen));
                         progressDialog.dismiss();
                         break;
@@ -195,7 +195,7 @@ public class FriendActivity extends AppCompatActivity {
                 friendRequestDBR.child(fCurrentUser.getUid()).child("ReceivedRequests").child(UID).removeValue();
                 friendRequestDBR.child(UID).child("SentRequests").child(fCurrentUser.getUid()).removeValue();
                 friendCurrentState = "notFriends";
-                Add.setText("Send Friend Request");
+                Add.setText(getString(R.string.send_request));
                 Add.setBackground(getDrawable(R.drawable.buttongreen));
                 Delete.setVisibility(View.INVISIBLE);
                 progressDialog.dismiss();

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="10dp">
+    android:padding="@dimen/space_10">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -12,16 +12,17 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/friendImage"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="10dp"
+            android:layout_width="@dimen/space_60"
+            android:layout_height="@dimen/space_60"
+            android:layout_marginLeft="@dimen/space_5"
+            android:layout_marginRight="@dimen/space_10"
             android:src="@drawable/ic_account_circle_black_24dp" />
 
         <ImageView
+            android:contentDescription="@string/title_friends"
             android:id="@+id/friendOnlineIcon"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="@dimen/space_20"
+            android:layout_height="@dimen/space_20"
             android:layout_alignBottom="@id/friendImage"
             android:layout_alignRight="@id/friendImage"
             android:src="@drawable/ic_fiber_manual_record_black_24dp"
@@ -33,8 +34,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginLeft="5dp"
+        android:layout_height="@dimen/space_60"
+        android:layout_marginLeft="@dimen/space_5"
         android:orientation="vertical">
 
         <TextView
@@ -43,8 +44,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:textColor="#fff"
-            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/space_15"
             android:textStyle="bold" />
 
         <TextView
@@ -52,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textColor="#fff" />
+            android:textColor="@color/white" />
 
     </LinearLayout>
 
