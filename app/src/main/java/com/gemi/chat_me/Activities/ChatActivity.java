@@ -2,7 +2,9 @@ package com.gemi.chat_me.Activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,12 +13,10 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.gemi.chat_me.Application.BaseApp;
 import com.gemi.chat_me.Application.GetTime;
 import com.gemi.chat_me.Models.Messages;
 import com.gemi.chat_me.R;
@@ -29,6 +29,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -48,6 +49,7 @@ public class ChatActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     List<Messages> messagesList = new ArrayList<>();
     ChatAdapter chatAdapter;
+    int currentVisiblePosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,36 +142,68 @@ public class ChatActivity extends AppCompatActivity {
         });
     }
 
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        currentVisiblePosition = ((LinearLayoutManager) recyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition();
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        (recyclerView.getLayoutManager()).scrollToPosition(currentVisiblePosition);
+        currentVisiblePosition = 0;
+
+    }
+
     public void LoadMessages() {
-        databaseReference.child("Messages").child(currentUser).child(UID).addChildEventListener(new ChildEventListener() {
+
+        new AsyncTask<Void, Void, Void>() {
             @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Messages messages = dataSnapshot.getValue(Messages.class);
-                messagesList.add(messages);
-                chatAdapter.notifyDataSetChanged();
-                recyclerView.scrollToPosition(chatAdapter.getItemCount() - 1);
+            protected Void doInBackground(Void... voids) {
+
+
+                databaseReference.child("Messages").child(currentUser).child(UID).addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                        Messages messages = dataSnapshot.getValue(Messages.class);
+
+                        messagesList.add(messages);
+                        chatAdapter.notifyDataSetChanged();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+
+                                recyclerView.scrollToPosition(chatAdapter.getItemCount() - 1);
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+                return null;
             }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+        }.execute();
     }
 
     @Override
